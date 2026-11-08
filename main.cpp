@@ -33,6 +33,17 @@ TEST(BooleanTest, CheckFalse)
     ASSERT_FALSE(10 < 5);
 }
 
+TEST(BooleanTest, CheckTrueEXPECT)
+{
+    EXPECT_TRUE(10 > 5);
+}
+
+TEST(BooleanTest, CheckFalseEXPECT)
+{
+    EXPECT_FALSE(10 < 5);
+}
+
+
 TEST(AdditionTest, PositiveNumbers)
 {
     Calculator calc;
