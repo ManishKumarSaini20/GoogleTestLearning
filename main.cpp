@@ -1,25 +1,28 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include "Header/Calculator.h"
+#include"Header/TestFixture.h"
 
-TEST(AdditionTest, AssertPass)
+TEST_F(TestFixture, AssertPass)
 {
-    Calculator calc;
-    ASSERT_EQ(30, calc.Add(10,20));
+    std::cout<<"expectedValue = "<<expectedValue<<std::endl;
+    ASSERT_EQ(expectedValue, calc.Add(10,20));
     std::cout<<"After PASS ASSERT"<<std::endl;
 }
 
-TEST(AdditionTest, AssertFail)
+TEST_F(TestFixture, AssertFail)
 {
-    Calculator calc;
-    ASSERT_EQ(50, calc.Add(10,20));
+    std::cout<<"expectedValue = "<<expectedValue<<std::endl;
+    expectedValue = 50;
+    std::cout<<"expectedValue = "<<expectedValue<<std::endl;
+    ASSERT_EQ(expectedValue, calc.Add(10,20));
     std::cout<<"After FAIL ASSERT"<<std::endl;
 }
 
-TEST(AdditionTest, ExpectFail)
+TEST_F(TestFixture, ExpectFail)
 {
-    Calculator calc;
-    EXPECT_EQ(50, calc.Add(10,20));
+    expectedValue = 50;
+    EXPECT_EQ(expectedValue, calc.Add(10,20));
     std::cout<<"After FAIL EXPECT"<<std::endl;
 }
 
@@ -44,35 +47,34 @@ TEST(BooleanTest, CheckFalseEXPECT)
 }
 
 
-TEST(AdditionTest, PositiveNumbers)
+TEST_F(TestFixture, PositiveNumbers)
 {
-    Calculator calc;
-    ASSERT_EQ(30, calc.Add(10,20));
+    ASSERT_EQ(expectedValue, calc.Add(10,20));
 }
 
-TEST(AdditionTest, NegativeNumbers)
+TEST_F(TestFixture, NegativeNumbers)
 {
-    Calculator calc;
-    ASSERT_EQ(-30, calc.Add(-10,-20));
+    expectedValue = -30;
+    ASSERT_EQ(expectedValue, calc.Add(-10,-20));
 }
 
-TEST(AdditionTest, WrongResult)
+TEST_F(TestFixture, WrongResult)
 {
-    Calculator calc;
-    ASSERT_EQ(50, calc.Add(10,20));
+    expectedValue = 50;
+    ASSERT_EQ(expectedValue, calc.Add(10,20));
     std::cout<<"After FAIL ASSERT"<<std::endl;
 }
 
-TEST(SubstractionTest, PositiveNumbers)
+TEST_F(TestFixture, AddPositiveNumbers)
 {
-    Calculator calc;
-    ASSERT_EQ(10, calc.Sub(20,10));
+    expectedValue = 10;
+    ASSERT_EQ(expectedValue, calc.Sub(20,10));
 }
 
-TEST(SubstractionTest, NegativeNumbers)
+TEST_F(TestFixture, SubNegativeNumbers)
 {
-    Calculator calc;
-    ASSERT_EQ(10, calc.Sub(-20,-10));
+    expectedValue = 10;
+    ASSERT_EQ(expectedValue, calc.Sub(-20,-10));
 }
 
 int main(int argc, char **argv)
