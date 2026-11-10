@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include "Header/Calculator.h"
-#include"Header/TestFixture.h"
+#include "Header/TestFixture.h"
+#include "Header/SubtractionFixture.h"
 
 TEST_F(TestFixture, AssertPass)
 {
@@ -75,6 +76,28 @@ TEST_F(TestFixture, SubNegativeNumbers)
 {
     expectedValue = 10;
     ASSERT_EQ(expectedValue, calc.Sub(-20,-10));
+}
+
+TEST_F(TestFixture, SharedInputs)
+{
+    ASSERT_EQ(expectedValue, calc.Add(inputA,inputB));
+}
+
+TEST_F(TestFixture, ModifyInputA)
+{
+    inputA = 40;
+    expectedValue = 60;
+    ASSERT_EQ(expectedValue, calc.Add(inputA, inputB));
+}
+
+TEST_F(TestFixture, VerifyInputAReset)
+{
+    ASSERT_EQ(10, inputA);
+}
+
+TEST_F(SubtractionFixture, PositiveSubtraction)
+{
+    ASSERT_EQ(10, calc.Sub(lhs, rhs));
 }
 
 int main(int argc, char **argv)

@@ -2,18 +2,28 @@
 
 class TestFixture : public testing::Test
 {
-    protected:
+protected:
+
     Calculator calc;
+
     int expectedValue;
-    public:
+
+    int inputA;
+
+    int inputB;
+
     void SetUp() override
     {
-        std::cout<<"Inside SetUp"<<std::endl;
         expectedValue = 30;
+
+        inputA = 10;
+        inputB = 20;
+
+        std::cout<<"Inside TestFixture::SetUp"<<std::endl;
     }
 
     void TearDown() override
     {
-        std::cout<<"Inside TearDown"<<std::endl;
+        std::cout<<"Inside TestFixture::TearDown"<<std::endl;
     }
 };
